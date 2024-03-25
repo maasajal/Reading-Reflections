@@ -2,12 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Root from "./components/Root/Root";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div className="text-5xl font-bold text-center">Reading Reflections!</div>
-    ),
+    element: <Root />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
