@@ -46,7 +46,7 @@ const Header = () => {
             {links}
           </ul>
         </div>
-        <a className="btn text-2xl hover:text-[#23BE0A] hover:border-[#23BE0A]">
+        <a className="btn btn-ghost text-2xl hover:text-[#23BE0A] hover:border-[#23BE0A]">
           Reading <span className="text-[#23BE0A]">Reflections</span>
         </a>
       </div>
