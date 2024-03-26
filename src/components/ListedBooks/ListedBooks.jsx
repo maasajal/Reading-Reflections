@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { useLoaderData } from "react-router-dom";
-import { getStoredReadBooks } from "../../utility/localStorage";
-import ReadBook from "../ReadBook/ReadBook";
+import {
+  getStoredReadBooks,
+  getStoredWishlist,
+} from "../../utility/localStorage";
+import StoredBooks from "../StoredBooks/StoredBooks";
 const ListedBooks = () => {
   const books = useLoaderData();
   const [readBook, setReadBook] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
+
   useEffect(() => {
     const storedBookIds = getStoredReadBooks();
     if (books.length > 0) {
@@ -13,6 +18,13 @@ const ListedBooks = () => {
         storedBookIds.includes(book.bookId)
       );
       setReadBook(readBook);
+    }
+    const storedWishlistIds = getStoredWishlist();
+    if (books.length > 0) {
+      const wishlist = books.filter((wish) =>
+        storedWishlistIds.includes(wish.bookId)
+      );
+      setWishlist(wishlist);
     }
   }, []);
   return (
@@ -33,14 +45,14 @@ const ListedBooks = () => {
           role="tab"
           className="tab"
           aria-label="Read Books"
-          checked
+          defaultChecked
         />
         <div
           role="tabpanel"
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
-          {readBook.map((book) => (
-            <ReadBook book={book} />
+          {readBook.map((read) => (
+            <StoredBooks key={read.bookId} book={read} />
           ))}
         </div>
 
@@ -55,7 +67,9 @@ const ListedBooks = () => {
           role="tabpanel"
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
-          Wishlist Books
+          {wishlist.map((wish) => (
+            <StoredBooks key={wish.bookId} book={wish} />
+          ))}
         </div>
       </div>
     </>

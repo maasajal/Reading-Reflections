@@ -1,5 +1,7 @@
 import { MdOutlineStarOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
+
 const Book = ({ book }) => {
   const { bookId, bookName, author, image, tags, category, rating } = book;
   return (
@@ -15,8 +17,8 @@ const Book = ({ book }) => {
           </figure>
           <div className="">
             <div className="flex flex-wrap gap-2 my-4">
-              {tags.map((tag) => (
-                <p className="text-[#23BE0A] bg-[#23BE0A0D] rounded-xl py-1 px-2 text-center">
+              {tags.map((tag, idx) => (
+                <p key={idx} className="text-[#23BE0A] bg-[#23BE0A0D] rounded-xl py-1 px-2 text-center">
                   {tag}
                 </p>
               ))}
@@ -38,4 +40,7 @@ const Book = ({ book }) => {
     </>
   );
 };
+Book.prototype = {
+    book: PropTypes.object.isRequired,
+}
 export default Book;

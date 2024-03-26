@@ -4,7 +4,7 @@ import { MdPublishedWithChanges } from "react-icons/md";
 import { MdOutlineStarOutline } from "react-icons/md";
 
 import { Link } from "react-router-dom";
-const ReadBook = ({ book }) => {
+const StoredBooks = ({ book }) => {
   const {
     image,
     bookId,
@@ -28,8 +28,11 @@ const ReadBook = ({ book }) => {
           <p className="my-2">By: {author}</p>
           <div className="flex flex-wrap items-center gap-4 my-2">
             <strong>Tag</strong>
-            {tags.map((tag) => (
-              <p className="text-[#23BE0A] bg-[#23BE0A0D] rounded-full py-1 text-center">
+            {tags.map((tag, idx) => (
+              <p
+                key={idx}
+                className="text-[#23BE0A] bg-[#23BE0A0D] rounded-full py-1 text-center"
+              >
                 {tag}
               </p>
             ))}
@@ -49,11 +52,12 @@ const ReadBook = ({ book }) => {
             </div>
           </div>
           <div className="card-actions">
-            <button className="btn bg-[#328EFF26] text-[#328EFF] hover:border-[#23BE0A] hover:bg-transparent text-white hover:text-[#23BE0A] rounded-full px-6">
+            <button className="btn bg-[#328EFF26] text-[#328EFF] hover:border-[#23BE0A] hover:bg-transparent hover:text-[#23BE0A] rounded-full px-6">
               Category: {category}
             </button>
-            <button className="btn bg-[#FFAC3326] text-[#FFAC33] hover:border-[#23BE0A] hover:bg-transparent text-white hover:text-[#23BE0A] rounded-full px-6">
-              Rating: {rating}<MdOutlineStarOutline />
+            <button className="btn bg-[#FFAC3326] text-[#FFAC33] hover:border-[#23BE0A] hover:bg-transparent hover:text-[#23BE0A] rounded-full px-6">
+              Rating: {rating}
+              <MdOutlineStarOutline />
             </button>
             <Link to={`/book/${bookId}`}>
               <button className="btn bg-[#23BE0A] hover:border-[#23BE0A] hover:bg-transparent text-white hover:text-[#23BE0A] rounded-full px-6 hover:rounded-full">
@@ -66,4 +70,4 @@ const ReadBook = ({ book }) => {
     </>
   );
 };
-export default ReadBook;
+export default StoredBooks;

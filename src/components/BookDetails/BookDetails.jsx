@@ -1,7 +1,7 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { saveReadBook, saveWishlist } from "../../utility/localStorage";
+import { getStoredWishlist, saveReadBook, saveWishlist } from "../../utility/localStorage";
 
 const BookDetails = () => {
   const books = useLoaderData();
@@ -23,11 +23,14 @@ const BookDetails = () => {
 
   const handleReadBooks = () => {
     saveReadBook(idInt);
-    toast(`${bookName} added to the Read Books successfully!`);
+    // toast(`${bookName} added to the Read Books successfully!`);
   };
+//   const handleWishlists = () => {
+//     saveWishlist(idInt);
+//     toast(`${bookName} added to Wishlists successfully!`);
+//   };
   const handleWishlists = () => {
     saveWishlist(idInt);
-    toast(`${bookName} added to Wishlists successfully!`);
   };
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12 mb-32">
