@@ -22,11 +22,11 @@ const BookDetails = () => {
   } = book;
 
   const handleReadBooks = () => {
-    saveReadBook(bookId);
+    saveReadBook(idInt);
     toast(`${bookName} added to the Read Books successfully!`);
   };
   const handleWishlists = () => {
-    saveWishlist(bookId);
+    saveWishlist(idInt);
     toast(`${bookName} added to Wishlists successfully!`);
   };
   return (

@@ -1,13 +1,13 @@
-a {
+.navbar a {
   margin-right: 5px;
   font-size: 18px;
 }
-a.active {
+.navbar a.active {
   border: 1px solid #23be0a;
   background-color: transparent !important;
   color: #23be0a !important;
 }
-a:hover {
+.navbar a:hover {
   border: 1px solid #23be0a;
   background-color: transparent !important;
   color: #23be0a;
