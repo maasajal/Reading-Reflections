@@ -1,4 +1,4 @@
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const getStoredReadBooks = () => {
   const storedReadBook = localStorage.getItem("read-book");
