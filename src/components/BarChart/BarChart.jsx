@@ -56,9 +56,9 @@ const BarChart = () => {
     return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
   };
   return (
-    <div>
+    <div className="bg-[#13131308] flex items-center justify-center py-28 rounded-xl">
       <BChart
-        width={800}
+        width={1000}
         height={400}
         data={readBook}
         margin={{
