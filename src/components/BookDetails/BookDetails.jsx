@@ -19,8 +19,8 @@ const BookDetails = () => {
   } = book;
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12 mb-32">
-      <div className="bg-[#1313130D] rounded-xl p-12">
-        <img src="../images/banner_book.png" alt="" />
+      <div className="bg-[#1313130D] rounded-xl p-12 flex items-center justify-center">
+        <img src={image} alt={bookName} className="shadow-2xl" />
       </div>
       <div>
         <h2 className="text-4xl font-bold">{bookName} </h2>
@@ -60,7 +60,9 @@ const BookDetails = () => {
           <button className="btn border-[#1313134D] bg-transparent px-7 mr-4 hover:bg-[#23BE0A] hover:text-white">
             Read
           </button>
-          <button className="btn bg-[#50B1C9] text-white px-7 hover:bg-[#23BE0A]">Wishlist</button>
+          <button className="btn bg-[#50B1C9] text-white px-7 hover:bg-[#23BE0A]">
+            Wishlist
+          </button>
         </div>
       </div>
     </div>
