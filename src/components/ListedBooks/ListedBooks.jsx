@@ -33,9 +33,25 @@ const ListedBooks = () => {
         <h2 className="text-3xl font-bold my-8 bg-[#1313130D] py-6 rounded-xl">
           Books
         </h2>
-        <button className="btn bg-[#23BE0A] hover:border-[#23BE0A] hover:bg-transparent text-white hover:text-[#23BE0A]">
+        {/* <button className="btn bg-[#23BE0A] hover:border-[#23BE0A] hover:bg-transparent text-white hover:text-[#23BE0A]">
           Sort By <IoIosArrowDown className="text-xl" />{" "}
-        </button>
+        </button> */}
+        <details className="dropdown">
+          <summary className="m-1 btn bg-[#23BE0A] hover:border-[#23BE0A] hover:bg-transparent text-white hover:text-[#23BE0A]">
+            Sort By <IoIosArrowDown className="text-xl" />
+          </summary>
+          <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+            <li>
+              <a>Rating</a>
+            </li>
+            <li>
+              <a>Number of pages</a>
+            </li>
+            <li>
+              <a>Publisher year</a>
+            </li>
+          </ul>
+        </details>
       </div>
 
       <div role="tablist" className="tabs tabs-lifted my-10">
