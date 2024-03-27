@@ -16,6 +16,9 @@ const Header = () => {
       <li>
         <NavLink to="/new-books">New Books</NavLink>
       </li>
+      <li>
+        <NavLink to="/blog">Blog</NavLink>
+      </li>
     </>
   );
   return (
@@ -57,10 +60,10 @@ const Header = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn text-lg px-8 bg-[#23BE0A] hover:bg-[#23BE0A] text-white mr-4">
+        <a className="btn text-lg px-6 bg-[#23BE0A] hover:bg-[#23BE0A] text-white mr-4">
           Sign In
         </a>
-        <a className="btn text-lg bg-[#59C6D2] px-8 hover:bg-[#23BE0A] text-white">
+        <a className="btn text-lg bg-[#59C6D2] px-6 hover:bg-[#23BE0A] text-white">
           Sign Up
         </a>
       </div>

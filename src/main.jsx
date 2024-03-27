@@ -9,6 +9,7 @@ import ListedBooks from "./components/ListedBooks/ListedBooks";
 import BookDetails from "./components/BookDetails/BookDetails";
 import PagesToRead from "./components/PagesToRead/PagesToRead";
 import NewBooks from "./components/NewBooks/NewBooks";
+import Blog from "./components/Blog/Blog";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/new-books",
         element: <NewBooks />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
     ],
   },

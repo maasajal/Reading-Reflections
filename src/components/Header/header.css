@@ -1,6 +1,6 @@
 .navbar a {
   margin-right: 5px;
-  font-size: 18px;
+  font-size: 16px;
 }
 .navbar a.active {
   border: 1px solid #23be0a;
