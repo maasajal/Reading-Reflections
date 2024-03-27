@@ -1,0 +1,62 @@
+[
+  {
+    "bookId": 1,
+    "title": "The Atlas Six",
+    "author": "Olivie Blake",
+    "genre": "Fantasy"
+  },
+  {
+    "bookId": 2,
+    "title": "The Maid",
+    "author": "Nita Prose",
+    "genre": "Mystery/Thriller"
+  },
+  {
+    "bookId": 3,
+    "title": "Project Hail Mary",
+    "author": "Andy Weir",
+    "genre": "Science Fiction"
+  },
+  {
+    "bookId": 4,
+    "title": "The Rose Code",
+    "author": "Kate Quinn",
+    "genre": "Historical Fiction"
+  },
+  {
+    "bookId": 5,
+    "title": "Malibu Rising",
+    "author": "Taylor Jenkins Reid",
+    "genre": "Contemporary Fiction"
+  },
+  {
+    "bookId": 6,
+    "title": "The Soulmate Equation",
+    "author": "Christina Lauren",
+    "genre": "Romance"
+  },
+  {
+    "bookId": 7,
+    "title": "Klara and the Sun",
+    "author": "Kazuo Ishiguro",
+    "genre": "Literary Fiction"
+  },
+  {
+    "bookId": 8,
+    "title": "Local Woman Missing",
+    "author": "Mary Kubica",
+    "genre": "Suspense/Thriller"
+  },
+  {
+    "bookId": 9,
+    "title": "The Plot",
+    "author": "Jean Hanff Korelitz",
+    "genre": "Psychological Thriller"
+  },
+  {
+    "bookId": 10,
+    "title": "A Court of Silver Flames",
+    "author": "Sarah J. Maas",
+    "genre": "Young Adult/Fantasy"
+  }
+]
