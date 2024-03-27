@@ -12,7 +12,7 @@
 
 - Top rating book list
 - Add to Wishlist
-- Read the book
+- Read the book list
 - Details of the book
 - Reading pages Bar Chart
 - Category based book
@@ -20,3 +20,7 @@
 - Toastify toaster
 - New Upcoming book list
 - Blog of the popular books
+- Sort BY:
+  - Rating
+  - Number of pages
+  - Publisher year

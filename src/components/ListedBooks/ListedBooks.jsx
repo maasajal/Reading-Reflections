@@ -12,19 +12,25 @@ const ListedBooks = () => {
   const [wishlist, setWishlist] = useState([]);
 
   useEffect(() => {
-    const storedBookIds = getStoredReadBooks();
-    if (books.length > 0) {
-      const readBook = books.filter((book) =>
-        storedBookIds.includes(book.bookId)
-      );
-      setReadBook(readBook);
-    }
     const storedWishlistIds = getStoredWishlist();
     if (books.length > 0) {
       const wishlist = books.filter((wish) =>
         storedWishlistIds.includes(wish.bookId)
       );
       setWishlist(wishlist);
+    }
+    const storedBookIds = getStoredReadBooks();
+    if (books.length > 0) {
+      const readBook = books.filter((book) =>
+        storedBookIds.includes(book.bookId)
+      );
+      setReadBook(readBook);
+      wishlist.map((wishBook) => {
+        const leftWishlist = wishlist.filter(
+          (wish) => wish.bookId !== wishBook.bookId
+        );
+        setWishlist(leftWishlist);
+      });
     }
   }, []);
   return (
