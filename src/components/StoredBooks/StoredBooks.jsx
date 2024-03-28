@@ -2,8 +2,9 @@ import { LuUsers2 } from "react-icons/lu";
 import { RiPagesLine } from "react-icons/ri";
 import { MdPublishedWithChanges } from "react-icons/md";
 import { MdOutlineStarOutline } from "react-icons/md";
-
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+
 const StoredBooks = ({ book }) => {
   const {
     image,
@@ -69,5 +70,8 @@ const StoredBooks = ({ book }) => {
       </div>
     </>
   );
+};
+StoredBooks.prototype = {
+  book: PropTypes.object.isRequired,
 };
 export default StoredBooks;

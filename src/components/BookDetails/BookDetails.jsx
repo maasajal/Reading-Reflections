@@ -41,8 +41,11 @@ const BookDetails = () => {
         </p>
         <div className="flex flex-wrap gap-4 my-4 items-center">
           <strong>Tag </strong>
-          {tags.map((tag) => (
-            <p className="text-[#23BE0A] bg-[#23BE0A0D] rounded-xl py-1 px-2 text-center">
+          {tags.map((tag, idx) => (
+            <p
+              key={idx}
+              className="text-[#23BE0A] bg-[#23BE0A0D] rounded-xl py-1 px-2 text-center"
+            >
               {tag}
             </p>
           ))}

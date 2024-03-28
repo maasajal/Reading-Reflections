@@ -31,7 +31,13 @@ const getStoredWishlist = () => {
 const saveWishlist = (bookId) => {
   const storedWishlist = getStoredWishlist();
   const exists = storedWishlist.find((readBookId) => readBookId === bookId);
-  if (!exists) {
+  const bookReadChecked = getStoredReadBooks();
+
+  if (bookReadChecked.includes(bookId)) {
+    toast("You have already Read this book!");
+    delete storedWishlist();
+    localStorage.setItem("wishlist", JSON.stringify(storedWishlist));
+  } else if (!exists) {
     storedWishlist.push(bookId);
     localStorage.setItem("wishlist", JSON.stringify(storedWishlist));
     toast(`Book is added to Wishlists successfully!`);

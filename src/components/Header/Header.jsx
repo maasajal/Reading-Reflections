@@ -52,9 +52,9 @@ const Header = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-2xl hover:text-[#23BE0A] hover:border-[#23BE0A]">
+        <h3 className="btn btn-ghost text-2xl hover:text-[#23BE0A] hover:border-[#23BE0A] hover:bg-transparent">
           Reading <span className="text-[#23BE0A]">Reflections</span>
-        </a>
+        </h3>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>

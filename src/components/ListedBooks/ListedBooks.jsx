@@ -10,54 +10,88 @@ const ListedBooks = () => {
   const books = useLoaderData();
   const [readBook, setReadBook] = useState([]);
   const [wishlist, setWishlist] = useState([]);
+  const [sortRead, setSortRead] = useState([]);
+  const [sortWish, setSortWish] = useState([]);
 
   useEffect(() => {
     const storedWishlistIds = getStoredWishlist();
+    const storedBookIds = getStoredReadBooks();
+
     if (books.length > 0) {
-      const wishlist = books.filter((wish) =>
+      const bookWishlist = books.filter((wish) =>
         storedWishlistIds.includes(wish.bookId)
       );
-      setWishlist(wishlist);
+      setWishlist(...wishlist, bookWishlist);
+      setSortWish(wishlist);
     }
-    const storedBookIds = getStoredReadBooks();
     if (books.length > 0) {
-      const readBook = books.filter((book) =>
+      // setSortRead(bookWishlist)
+      const bookRead = books.filter((book) =>
         storedBookIds.includes(book.bookId)
       );
-      setReadBook(readBook);
-      wishlist.map((wishBook) => {
-        const leftWishlist = wishlist.filter(
-          (wish) => wish.bookId !== wishBook.bookId
-        );
-        setWishlist(leftWishlist);
-      });
+      setReadBook(...readBook, bookRead);
+      setSortRead(bookRead);
     }
   }, []);
+  // Implement sorting in descending order
+  const handleSortBooks = (filter) => {
+    if (filter === "rating") {
+      const rating = sortRead.sort((a, b) => b.rating - a.rating);
+      const wishRating = wishlist.sort((a, b) => b.rating - a.rating);
+      setSortRead(rating);
+      setSortWish(wishRating);
+    } else if (filter === "numbers-pages") {
+      const numberPages = sortRead.sort((a, b) => b.totalPages - a.totalPages);
+      const numberOfPages = wishlist.sort(
+        (a, b) => b.totalPages - a.totalPages
+      );
+      setSortRead(numberPages);
+      setSortWish(numberOfPages);
+    } else if (filter === "publisher-year") {
+      const year = sortRead.sort(
+        (a, b) => b.yearOfPublishing - a.yearOfPublishing
+      );
+      const publisheYear = wishlist.sort(
+        (a, b) => b.yearOfPublishing - a.yearOfPublishing
+      );
+      setSortRead(year);
+      setSortWish(publisheYear);
+    }
+  };
   return (
     <>
       <div className="text-center">
         <h2 className="text-3xl font-bold my-8 bg-[#1313130D] py-6 rounded-xl">
           Books
         </h2>
-        {/* <button className="btn bg-[#23BE0A] hover:border-[#23BE0A] hover:bg-transparent text-white hover:text-[#23BE0A]">
-          Sort By <IoIosArrowDown className="text-xl" />{" "}
-        </button> */}
-        <details className="dropdown">
-          <summary className="m-1 btn bg-[#23BE0A] hover:border-[#23BE0A] hover:bg-transparent text-white hover:text-[#23BE0A]">
+        <div className="dropdown">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn m-1 bg-[#23BE0A] hover:border-[#23BE0A] hover:bg-transparent text-white hover:text-[#23BE0A]"
+          >
             Sort By <IoIosArrowDown className="text-xl" />
-          </summary>
-          <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+          </div>
+
+          <ul
+            tabIndex={0}
+            className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52"
+          >
             <li>
-              <a>Rating</a>
+              <a onClick={() => handleSortBooks("rating")}>Rating</a>
             </li>
             <li>
-              <a>Number of pages</a>
+              <a onClick={() => handleSortBooks("numbers-pages")}>
+                Number of pages
+              </a>
             </li>
             <li>
-              <a>Publisher year</a>
+              <a onClick={() => handleSortBooks("publisher-year")}>
+                Publisher year
+              </a>
             </li>
           </ul>
-        </details>
+        </div>
       </div>
 
       <div role="tablist" className="tabs tabs-lifted my-10">
@@ -73,7 +107,7 @@ const ListedBooks = () => {
           role="tabpanel"
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
-          {readBook.map((read) => (
+          {sortRead.map((read) => (
             <StoredBooks key={read.bookId} book={read} />
           ))}
         </div>
@@ -89,7 +123,7 @@ const ListedBooks = () => {
           role="tabpanel"
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
-          {wishlist.map((wish) => (
+          {sortWish.map((wish) => (
             <StoredBooks key={wish.bookId} book={wish} />
           ))}
         </div>
