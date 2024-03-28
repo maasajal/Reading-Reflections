@@ -12,6 +12,10 @@ const ListedBooks = () => {
   const [wishlist, setWishlist] = useState([]);
   const [sortRead, setSortRead] = useState([]);
   const [sortWish, setSortWish] = useState([]);
+  const [isSort, setIsSort] = useState(false);
+  const handleSortMenu = () => {
+    setIsSort(!isSort);
+  };
 
   useEffect(() => {
     const storedWishlistIds = getStoredWishlist();
@@ -22,10 +26,9 @@ const ListedBooks = () => {
         storedWishlistIds.includes(wish.bookId)
       );
       setWishlist(...wishlist, bookWishlist);
-      setSortWish(wishlist);
+      setSortWish(bookWishlist);
     }
     if (books.length > 0) {
-      // setSortRead(bookWishlist)
       const bookRead = books.filter((book) =>
         storedBookIds.includes(book.bookId)
       );
@@ -35,19 +38,20 @@ const ListedBooks = () => {
   }, []);
   // Implement sorting in descending order
   const handleSortBooks = (filter) => {
+    console.log(filter);
     if (filter === "rating") {
       const rating = sortRead.sort((a, b) => b.rating - a.rating);
       const wishRating = wishlist.sort((a, b) => b.rating - a.rating);
       setSortRead(rating);
       setSortWish(wishRating);
-    } else if (filter === "numbers-pages") {
+    } else if (filter === "totalPages") {
       const numberPages = sortRead.sort((a, b) => b.totalPages - a.totalPages);
       const numberOfPages = wishlist.sort(
         (a, b) => b.totalPages - a.totalPages
       );
       setSortRead(numberPages);
       setSortWish(numberOfPages);
-    } else if (filter === "publisher-year") {
+    } else if (filter === "yearOfPublishing") {
       const year = sortRead.sort(
         (a, b) => b.yearOfPublishing - a.yearOfPublishing
       );
@@ -57,6 +61,7 @@ const ListedBooks = () => {
       setSortRead(year);
       setSortWish(publisheYear);
     }
+    setIsSort(false);
   };
   return (
     <>
@@ -69,28 +74,48 @@ const ListedBooks = () => {
             tabIndex={0}
             role="button"
             className="btn m-1 bg-[#23BE0A] hover:border-[#23BE0A] hover:bg-transparent text-white hover:text-[#23BE0A]"
+            onClick={handleSortMenu}
           >
             Sort By <IoIosArrowDown className="text-xl" />
           </div>
 
-          <ul
-            tabIndex={0}
-            className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a onClick={() => handleSortBooks("rating")}>Rating</a>
-            </li>
-            <li>
-              <a onClick={() => handleSortBooks("numbers-pages")}>
-                Number of pages
-              </a>
-            </li>
-            <li>
-              <a onClick={() => handleSortBooks("publisher-year")}>
-                Publisher year
-              </a>
-            </li>
-          </ul>
+          {isSort && (
+            <ul
+              tabIndex={0}
+              className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <a
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleSortBooks("rating");
+                  }}
+                >
+                  Rating
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleSortBooks("totalPages");
+                  }}
+                >
+                  Number of pages
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleSortBooks("yearOfPublishing");
+                  }}
+                >
+                  Publisher year
+                </a>
+              </li>
+            </ul>
+          )}
         </div>
       </div>
 
