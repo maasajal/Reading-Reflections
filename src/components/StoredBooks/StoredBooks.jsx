@@ -20,8 +20,8 @@ const StoredBooks = ({ book }) => {
   } = book;
   return (
     <>
-      <div className="card card-side border p-6 shadow-xl mb-6">
-        <div className="max-w-56 bg-[#F3F3F3] rounded-xl max-h-full flex items-center">
+      <div className="card card-side border md:p-6 shadow-xl mb-6 flex flex-col md:flex-row">
+        <div className="md:max-w-56 bg-[#F3F3F3] rounded-xl max-h-full flex items-center mx-auto mt-6">
           <img src={image} alt={bookName} className="p-5" />
         </div>
         <div className="card-body">
