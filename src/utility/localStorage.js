@@ -15,6 +15,7 @@ const saveReadBook = (bookId) => {
     storedReadBooks.push(bookId);
     localStorage.setItem("read-book", JSON.stringify(storedReadBooks));
     toast("Book added to Read Books successfully!");
+    removeBookFromWishlist(bookId);
   } else {
     toast("You have Already Read this Book!");
   }
@@ -35,8 +36,6 @@ const saveWishlist = (bookId) => {
 
   if (bookReadChecked.includes(bookId)) {
     toast("You have already Read this book!");
-    delete storedWishlist();
-    localStorage.setItem("wishlist", JSON.stringify(storedWishlist));
   } else if (!exists) {
     storedWishlist.push(bookId);
     localStorage.setItem("wishlist", JSON.stringify(storedWishlist));
@@ -44,5 +43,12 @@ const saveWishlist = (bookId) => {
   } else {
     toast(`Already added to Wishlist!`);
   }
+};
+const removeBookFromWishlist = (bookId) => {
+  const bookReadChecked = getStoredWishlist();
+  const updatedWishlist = bookReadChecked.filter(
+    (wishlistBookId) => wishlistBookId !== bookId
+  );
+  localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
 };
 export { getStoredReadBooks, saveReadBook, getStoredWishlist, saveWishlist };
